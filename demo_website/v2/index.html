@@ -1,0 +1,177 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Web-scraping Demo - Product List v2</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+.container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.card-img-top
+{
+    width: 100%;
+    height: 160px;
+    object-fit: none;
+}
+</style>
+
+<!-- JavaScrip, JQuery -->
+<script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Products (v2)</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="https://github.com/hippoandy/Webscraping_Demo_Workshop">GitHub Repo.</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+        </li>
+    </div>
+</nav>
+
+
+<div id="product-list" class="container"></div>
+
+<!-- Footer -->
+<footer class="page-footer font-small cyan darken-3">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright: Yu-Chang (Andy) Ho</div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+</body>
+<script>
+$( document ).ready(function()
+{
+    $.ajax({
+        type: 'get',
+        url: 'https://hipposerver.ddns.net/webscraping/assets/json/product_list.json',
+        dataType: 'JSON',
+        success: function( data )
+        {
+            var container = document.getElementById( 'product-list' );
+            var parent = null;
+            for( var i = 0; i < data.num_of_items; i++ )
+            {
+                var cur = data.results[ i ];
+
+                var idx = i % 4;
+                if( idx == 0 )
+                {
+                    // append the previous parent to doc (if any)
+                    if( parent != null ) container.appendChild( parent );
+                    parent = document.createElement( 'div' )
+                    parent.classList.add( 'row' );
+                }
+                var col = document.createElement( 'div' );
+                col.classList.add( 'col-sm-3' );
+                var card = document.createElement( 'div' );
+                card.classList.add( 'card' );
+                card.setAttribute( 'style', 'width: 18rem; text-align: center;' );
+
+                // card image
+                var img = document.createElement( 'img' );
+                img.classList.add( 'card-img-top' );
+                img.setAttribute( 'width', '100px' );
+                img.setAttribute( 'src', cur.img );
+                img.setAttribute( 'alt', cur.name );
+                // add image to the card
+                card.appendChild( img );
+
+                // card body
+                var body = document.createElement( 'div' );
+                body.classList.add( 'card-body' );
+
+                var title = document.createElement( 'h4' );
+                title.classList.add( 'item-title' );
+                title.innerHTML = cur.name;
+                // add title to body
+                body.appendChild( title );
+
+                var cate = document.createElement( 'h5' );
+                cate.classList.add( 'item-cate' );
+                cate.innerHTML = cur.cate;
+                // add cate to body
+                body.appendChild( cate );
+
+                var year = document.createElement( 'h6' );
+                year.classList.add( 'item-year' );
+                year.innerHTML = cur.year;
+                // add year to body
+                body.appendChild( year );
+
+                var price = document.createElement( 'p' );
+                price.classList.add( 'item-price' );
+                var span = document.createElement( 'span' );
+                span.innerHTML = "$" + cur.price + ".00";
+                price.appendChild( span );
+                // add price to body
+                body.appendChild( price );
+
+                var rating = document.createElement( 'div' );
+                rating.classList.add( 'star-rating' );
+
+                var p = document.createElement( 'p' );
+                p.classList.add( 'item-rating' );
+                span = document.createElement( 'span' );
+                span.innerHTML = cur.rating;
+                p.appendChild( span );
+                rating.appendChild( p );
+
+                var ul = document.createElement( 'ul' );
+                ul.classList.add( 'list-inline' );
+                for( var j = 0; j < 5; j++ )
+                {
+                    var li = document.createElement( 'li' );
+                    li.classList.add( 'list-inline-item' );
+                    var icon = document.createElement( 'i' );
+                    if( j != 4 )    icon.className += " fa fa-star";
+                    else            icon.className += " fa fa-star-o";
+                    li.appendChild( icon );
+                    ul.appendChild( li );
+                }
+                rating.appendChild( ul );
+                body.appendChild( rating );
+
+                span = document.createElement( 'span' );
+                span.classList.add( 'item-sold' );
+                span.innerHTML = cur.sold;
+                body.appendChild( span );
+                
+                card.appendChild( body );
+                col.appendChild( card );
+                parent.appendChild( col );
+            }
+            // append the last row
+            container.appendChild( parent );
+        },
+        error: function( data )
+        {
+            console.error( 'Data retrival failed!' );
+            console.error( data );
+        }
+    });
+});
+</script>
+</html>

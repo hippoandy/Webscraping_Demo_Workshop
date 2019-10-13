@@ -1,0 +1,87 @@
+{
+    "creation_date": "2019-10-13",
+    "creation_time": "00:09",
+    "num_of_items": 8,
+    "results": [
+        {
+            "name":     "iPhone 11",
+            "cate":     "Smartphone",
+            "brand":    "Apple Inc.",
+            "year":     2019,
+            "price":    765,
+            "rating":   4.3,
+            "sold":     1000,
+            "img":      "../assets/img/iphone_11.png"
+        },
+        {
+            "name":     "iPhone XR",
+            "cate":     "Smartphone",
+            "brand":    "Apple Inc.",
+            "year":     2018,
+            "price":    599,
+            "rating":   4.6,
+            "sold":     1500,
+            "img":      "../assets/img/iphone_xr.png"
+        },
+        {
+            "name":     "iPhone 8",
+            "cate":     "Smartphone",
+            "brand":    "Apple Inc.",
+            "year":     2017,
+            "price":    449,
+            "rating":   4.1,
+            "sold":     2900,
+            "img":      "../assets/img/iphone_8.png"
+        },
+        {
+            "name":     "iPhone 7",
+            "cate":     "Smartphone",
+            "brand":    "Apple Inc.",
+            "year":     2016,
+            "price":    259,
+            "rating":   4.8,
+            "sold":     2080,
+            "img":      "../assets/img/iphone_7.png"
+        },
+        {
+            "name":     "iPhone 6S",
+            "cate":     "Smartphone",
+            "brand":    "Apple Inc.",
+            "year":     2014,
+            "price":    114,
+            "rating":   4.4,
+            "sold":     1000,
+            "img":      "../assets/img/iphone_6s.png"
+        },
+        {
+            "name":     "iPhone 3G",
+            "cate":     "Smartphone",
+            "brand":    "Apple Inc.",
+            "year":     2008,
+            "price":    39,
+            "rating":   4.7,
+            "sold":     1000,
+            "img":      "../assets/img/iphone_3g.png"
+        },
+        {
+            "name":     "Samsung Galaxy S10",
+            "cate":     "Smartphone",
+            "brand":    "Samsung",
+            "year":     2018,
+            "price":    899,
+            "rating":   4.6,
+            "sold":     2500,
+            "img":      "../assets/img/samsung_s10.png"
+        },
+        {
+            "name":     "Samsung Galaxy S9",
+            "cate":     "Smartphone",
+            "brand":    "Samsung",
+            "year":     2019,
+            "price":    599,
+            "rating":   4.7,
+            "sold":     2405,
+            "img":      "../assets/img/samsung_s9.png"
+        }
+    ]
+}
