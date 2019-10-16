@@ -27,6 +27,8 @@ Please note that the second version of the product list is not able to be scrape
 
 The coding exercises are written in `Python`, an installation of `Python 3.6 or higher` is required. The code files are given in `Jupyter Notebook` format (`.ipynb` files). Please install Jupyter Notebook engine on your computer, or try out the `Anaconda` software package, which is available through [https://www.anaconda.com/distribution/#download-section](https://www.anaconda.com/distribution/#download-section).
 
+For installing only the Jupyter Notebook, please visit this site for instructions [https://jupyter.org/install](https://jupyter.org/install).
+
 ### Library Requirements
 
 Several Python libraries are required for this practices. For installation, tried the following commands.
